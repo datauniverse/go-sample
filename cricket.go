@@ -166,7 +166,7 @@ func main() {
 		"Winner", "Result", "OutcomeMethod", "Eliminator",
 		"OutcomeByInnings", "OutcomeByRuns",
 		"OutcomeByWickets", "OutcomeBowlOut",
-		"Overs", "PlayerOfMatch[0]", "TeamOne", "TeamTwo",
+		"Overs", "PlayerOfMatch", "TeamOne", "TeamTwo",
 		"TossDecision", "TossWinner", "UmpireOne", "UmpireTwo", "Venue",
 	})
 
