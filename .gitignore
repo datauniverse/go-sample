@@ -15,4 +15,4 @@
 # vendor/
 
 # Extracted data files
-data/*.yaml
+data/*
