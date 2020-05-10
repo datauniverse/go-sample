@@ -67,22 +67,18 @@ func getGame(games []cricket.Game) [][]string {
 	})
 
 	for _, g := range games {
-		var pom, u1, u2, d, t1, t2 string
+		var pom, u1, u2, d string
 		if len(g.Info.PlayerOfMatch) > 0 {
 			pom = g.Info.PlayerOfMatch[0]
 		}
 		if len(g.Info.Umpires) > 0 {
 			u1 = g.Info.Umpires[0]
-		} else if len(g.Info.Umpires) == 2 {
+		}
+		if len(g.Info.Umpires) > 1 {
 			u2 = g.Info.Umpires[1]
 		}
 		if len(g.Info.Dates) > 0 {
 			d = g.Info.Dates[0]
-		}
-		if len(g.Info.Teams) > 0 {
-			t1 = g.Info.Teams[0]
-		} else if len(g.Info.Teams) == 2 {
-			t2 = g.Info.Teams[1]
 		}
 
 		gTemp := []string{
@@ -91,7 +87,7 @@ func getGame(games []cricket.Game) [][]string {
 			g.Info.Outcome.Winner, g.Info.Outcome.Result, g.Info.Outcome.Method, g.Info.Outcome.Eliminator,
 			g.Info.Outcome.By.Innings, strconv.Itoa(int(g.Info.Outcome.By.Runs)),
 			strconv.Itoa(int(g.Info.Outcome.By.Wickets)), g.Info.Outcome.BowlOut,
-			strconv.Itoa(int(g.Info.Overs)), pom, t1, t2,
+			strconv.Itoa(int(g.Info.Overs)), pom, g.Info.Teams[0], g.Info.Teams[1],
 			g.Info.Toss.Decision, g.Info.Toss.Winner, u1, u2, g.Info.Venue,
 		}
 
@@ -159,6 +155,10 @@ func writeStringMatrixToCSVFile(filepath string, data [][]string) {
 			log.Fatal(err)
 		}
 	}
+}
+
+func CreateCSVFromYaml() {
+
 }
 
 func main() {
